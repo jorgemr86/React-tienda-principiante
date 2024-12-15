@@ -1,0 +1,104 @@
+.scroll-container {
+    // overflow: unset !important;
+    overflow-y: unset !important;
+}
+
+.site-header {
+    position: absolute;
+    width: 100vw;
+    height: calc(100vh / 20 * 3);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    .logo {
+        position: absolute;
+        left: calc(100vw / 18 * 1);
+        font-weight: 700;
+        font-size: 1.2vw;
+        letter-spacing: -0.05em;
+    }
+}
+
+
+
+.chapter {
+    position: relative;
+    // border-bottom: 1px solid red;
+    margin: calc(100vh / 20 * 3) 0 calc(100vh / 20 * 6);
+
+    .chapter-inner-wrapper {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        // background: red;
+
+        .chapter-image-frame {
+            position: relative;
+            width: calc(100vw / 18 * 6);
+            height: 90vh;
+            overflow: hidden;
+            background-color: white;
+
+            .chapter-image {
+                position: relative;
+                height: 125%;
+                width: 100%;
+                object-fit: cover;
+                object-position: center;
+            }
+        }
+
+        .chapter-text-wrapper {
+            position: relative;
+            width: calc(100vw / 18 * 6);
+
+            .chapter-heading {
+                font-family: "IBM Plex Sans", sans-serif;
+                font-weight: 700;
+                font-size: 7.5vw;
+                letter-spacing: -0.05em;
+                margin-top: calc(100vw / 18 * 2 );
+                margin-right: calc(100vw / 18 * -1);
+                margin-bottom: calc(100vh / 20 / 2);
+                margin-left: calc(100vw / 18 * -2);
+            }
+
+            .chapter-text {
+                font-size: 1vw;
+                line-height: 1.8vw;
+                margin-left: calc(100vw / 18 );
+            }
+        }
+    }
+
+    &:nth-child( even ) {
+        .chapter-image-frame {
+            order: 2;
+        }
+
+        .chapter-heading {
+            margin-right: 0;
+            margin-left: 0;
+        }
+
+        .chapter-text {
+            margin-right: calc(100vw / 18 );
+            margin-left: 0;
+        }
+    }
+
+    .chapter-text div {
+        opacity: 0;
+        transform: translateY(200%);
+        transition: 1s cubic-bezier(0.33, 1, 0.68, 1);
+    }
+
+    &.is-inview {
+        .chapter-text div {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+}
